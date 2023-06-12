@@ -1,0 +1,19 @@
+<h4>Internal Server Error - Refreshing page mek the error disaappear</h4>
+<ng-container *ngIf="error">
+    <h5 class="text-danger">Error: {{error.message}}</h5>
+    <p class="font-weight-bold">Note: If you are seeing this then it is not from angular</p>
+
+    <p>What to do next?</p>
+    <ol>
+        <li>Open chtome dev tools! and check in network tab</li>
+        <li>Exmine the request URL - what you requested?</li>
+        <li>Reproduce the problem in postman if comes erros then it is erros form server side only</li>
+
+    </ol>
+
+    <p style="font-weight: bold;">Following is the stack tarce - the following erros you can see to get resolve the
+        erros from API side</p>
+
+    <code class="mt-5" style="background-color: whitesmoke;">
+    {{error.details}}</code>
+</ng-container>
