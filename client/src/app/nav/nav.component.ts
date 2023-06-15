@@ -12,30 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 export class NavComponent implements OnInit {
 
   model: any = {};
-  currentUser: any;
 
   constructor(public accountService: AccountService, private router: Router,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.accountService.currentUser$.pipe(take(1)).subscribe({
-      next: user => {
-        if (user) {
-          this.currentUser = user;
-        }
-      }
-    })
-    // this.getCurrentUser();
   }
 
-
-  // getCurrentUser() {
-  //   const userString = localStorage.getItem('user');
-  //   if (userString) {
-  //     var user = JSON.parse(userString);
-  //     this.currentUser = user;
-  //   }
-  // }
 
   login() {
     this.accountService.login(this.model).subscribe({
