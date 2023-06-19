@@ -27,11 +27,11 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMembers();
-    // this.members$ = this.memberService.getMembers();
   }
 
   loadMembers(){
     if(this.userParams) {
+      console.log(this.userParams);
       this.memberService.setUserParams(this.userParams);
       this.memberService.getMembers(this.userParams).subscribe({
         next: response => {
@@ -39,6 +39,7 @@ export class MemberListComponent implements OnInit {
             if(response.result && response.pagination) {
               this.members = response.result;
               this.pagination = response.pagination;
+              console.log(response);
             }
           }
         }
