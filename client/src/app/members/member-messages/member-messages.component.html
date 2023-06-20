@@ -13,13 +13,13 @@
                         <div class="header">
                             <small class="text-muted">
                                 <span class="fa fa-clock-o">
-                                    {{message.messageSent | timeago}}
+                                    {{message.messageSent + 'Z' | timeago}}
                                 </span>
                                 <span class="text-danger" *ngIf="!message.dateRead && message.senderUsername !== username">
                                     (unread)
                                 </span>
                                 <span class="text-success" *ngIf="message.dateRead && message.senderUsername !== username">
-                                    (read) {{message.dateRead | timeago}}
+                                    (read) {{message.dateRead + 'Z' | timeago}}
                                 </span>
                             </small>
                         </div>
@@ -30,11 +30,13 @@
         </ul>
     </div>
     <div class="card-footer">
-        <form action="">
+        <form #messageForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off">
             <div class="input-group">
-                <input type="text" class="form-control input-sm" placeholder="type your message">
+                <input type="text" class="form-control input-sm" name="messageContent" required
+                [(ngModel)]="messageContent"
+                placeholder="type your message">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Send</button>
+                    <button class="btn btn-primary" [disabled]="!messageForm.valid" type="submit">Send</button>
                 </div>
             </div>
         </form>
