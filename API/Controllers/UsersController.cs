@@ -27,7 +27,6 @@ namespace API.Controllers
             _photoService = photoService;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
