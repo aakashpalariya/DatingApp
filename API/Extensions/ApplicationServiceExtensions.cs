@@ -6,6 +6,7 @@ using API.Data;
 using API.Helpers;
 using API.Interfaces;
 using API.Services;
+using API.SingalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -14,12 +15,6 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
-
-            //services cors
-            services.AddCors(p => p.AddPolicy("corsapp", builder =>
-            {
-                builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-            }));
 
             services.AddDbContext<DataContext>(opt =>
             {
@@ -38,6 +33,9 @@ namespace API.Extensions
             services.AddScoped<IPhotoService, PhotoService>();
 
             services.AddScoped<LogUserActivity>();
+
+            services.AddSignalR();
+            services.AddSingleton<PresenceTracker>();
 
             return services;
 
