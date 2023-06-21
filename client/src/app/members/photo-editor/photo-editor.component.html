@@ -51,22 +51,22 @@
         </table>
 
         <div>
-            <div>
+            <div class="mb-1">
                 Queue progress:
-                <div class="progress">
+                <div class="progress ma-2">
                     <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader?.progress + '%' }">
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-success btn-s" (click)="uploader?.uploadAll()"
+            <button type="button" class="btn btn-success btn-sm" (click)="uploader?.uploadAll()"
                 [disabled]="!uploader?.getNotUploadedItems()?.length">
                 <span class="fa fa-upload"></span> Upload all
             </button>
-            <button type="button" class="btn btn-warning btn-s" (click)="uploader?.cancelAll()"
+            <button type="button" class="btn btn-warning btn-sm" (click)="uploader?.cancelAll()"
                 [disabled]="!uploader?.isUploading">
                 <span class="fa fa-ban"></span> Cancel all
             </button>
-            <button type="button" class="btn btn-danger btn-s" (click)="uploader?.clearQueue()"
+            <button type="button" class="btn btn-danger btn-sm" (click)="uploader?.clearQueue()"
                 [disabled]="!uploader?.queue?.length">
                 <span class="fa fa-trash"></span> Remove all
             </button>
