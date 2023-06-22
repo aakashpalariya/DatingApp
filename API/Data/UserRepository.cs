@@ -42,7 +42,7 @@ namespace API.Data
             {
                 "created" => query.OrderByDescending(u => u.Created),
 
-                _=> query.OrderByDescending(u=>u.LastActive)
+                _ => query.OrderByDescending(u => u.LastActive)
             };
             return await PagedList<MemberDto>.CreateAsync(
                 query.AsNoTracking().ProjectTo<MemberDto>(_mapper.ConfigurationProvider),
@@ -61,16 +61,18 @@ namespace API.Data
                 .SingleOrDefaultAsync(s => s.UserName == username);
         }
 
+        public async Task<string> GetUserGender(string username)
+        {
+            return await _context.Users.Where(x => x.UserName == username)
+            .Select(s => s.Gender)
+            .FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
         {
             return await _context.Users
                 .Include(p => p.Photos)
                 .ToListAsync();
-        }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Update(AppUser user)
