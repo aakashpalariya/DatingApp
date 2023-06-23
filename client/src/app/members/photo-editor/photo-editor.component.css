@@ -13,4 +13,27 @@ input[type=file] {
 .btn-sm {
     margin: 4px;
 }
- 
+ .not-approved {
+     opacity: 0.2;
+ }
+
+ .img-wrapper {
+     position: relative
+ }
+
+.img-text {
+     position: relative;
+     left: 0;
+     right: 0;
+     margin-left: auto;
+     margin-right: auto;
+     bottom: 40%;
+     margin-bottom: -40%;
+ }
+
+ .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
